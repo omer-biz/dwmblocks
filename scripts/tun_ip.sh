@@ -8,5 +8,5 @@ if [[ $ip == '' ]]
 then
 	exit
 else
-	echo $ip
+	echo "tun0: $ip"
 fi
