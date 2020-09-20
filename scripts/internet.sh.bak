@@ -1,0 +1,16 @@
+#!/bin/sh
+
+sleep 1
+con=$(ping -c 1 '172.217.18.142')
+#con=$(ping -c 1 '127.0.0.1')
+
+echo $con
+
+if [[ $con == '' ]]
+then
+	icon='❎'
+else
+	icon=''
+fi
+
+echo "$icon"

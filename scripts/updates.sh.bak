@@ -1,0 +1,11 @@
+#!/bin/sh
+
+updates=$(checkupdates | wc -l)
+icon=''
+
+if [[ $? == 0 ]]
+then
+	echo "$icon $updates"
+else
+	echo ""
+fi

@@ -3,9 +3,11 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/		/*Update Signal*/
 	{"", 		EXEC("tun_ip.sh"), 		2, 						0},
+  	{" ", 		EXEC("time.sh"), 		1, 						0},
+  	{"", 		EXEC("updates.sh"), 	3600, 					0},
 	{"",		EXEC("volume.sh"),		0,						23},
-	{"  ", 	EXEC("time.sh"), 		60, 					0},
-	{"", 		EXEC("speed.sh"), 		1, 						0},
+	{"", 		EXEC("internet.sh"), 	1, 						0},
+	{"", 		EXEC("speed.sh"), 		1,						0},
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
