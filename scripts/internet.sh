@@ -12,7 +12,7 @@ then
 	mkdir -p $icon_dir
 	echo ' ' > "$icon_dir/$icon_file"
 fi
-net_icon="$(cat /dev/shm/internet/net_icon)"
+net_icon="$(cat "$icon_dir/$icon_file")"
 
 case $operstat in
 	down) wifiicon="📡 " ;;
@@ -29,24 +29,29 @@ check_internet() {
 		return
 	fi
 
-
+	# check if an instance is already running
 	list=$(ps aux | grep $pinged | grep -v 'grep')
-	if [[ ! -n $list ]]
+	if [[ -n $list ]]
 	then
-		if [[ $operstat = 'up' ]]
-		then
-			inte=$(ping -c 1 $pinged 2>/dev/null)
-
-			if [[ -n $inte ]]
-			then
-				# net_icon=' '
-				echo ' ' > "$icon_dir/$icon_file"
-			else
-				# net_icon=' '
-				echo ' ' > "$icon_dir/$icon_file"
-			fi
-		fi
+		return
 	fi
+
+	# check if connected
+	if [[ ! $operstat = 'up' ]]
+	then
+		return
+	fi
+
+	inte=$(ping -c 1 $pinged 2>/dev/null)
+	if [[ -n $inte ]]
+	then
+		# net_icon=' '
+		echo ' ' > "$icon_dir/$icon_file"
+	else
+		# net_icon=' '
+		echo ' ' > "$icon_dir/$icon_file"
+	fi
+	net_icon="$(cat "$icon_dir/$icon_file")"
 }
 
 check_internet&

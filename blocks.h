@@ -2,9 +2,9 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/		/*Update Signal*/
-	{"", 		EXEC("tun_ip.sh"), 		2, 						0},
-  	{" ", 		EXEC("time.sh"), 		60, 					0},
-  	{"", 		EXEC("updates.sh"), 	3600, 					0},
+	{"", 		EXEC("tun_ip.sh"), 		5, 						0},
+  	{"", 		EXEC("time.sh"), 		60, 					0},
+  	{"", 		EXEC("updates.sh"), 	1800, 					0},
 	{"",		EXEC("volume.sh"),		0,						23},
 	{"", 		EXEC("internet.sh"), 	1, 						0},
 	{"", 		EXEC("speed.sh"), 		1,						0},
