@@ -24,23 +24,14 @@ check_internet() {
 	# check internet per second
 	per_second=10
 	second=$(date "+%S")
-	if [[ ! $(( second % per_second )) = 0 ]]
-	then
-		return
-	fi
+	[[ ! $(( second & per_second )) ]] && return
 
 	# check if an instance is already running
 	list=$(ps aux | grep $pinged | grep -v 'grep')
-	if [[ -n $list ]]
-	then
-		return
-	fi
+	[[ -n $list ]] && return
 
 	# check if connected
-	if [[ ! $operstat = 'up' ]]
-	then
-		return
-	fi
+	[[ ! $operstat = 'up' ]] && return
 
 	inte=$(ping -c 1 $pinged 2>/dev/null)
 	if [[ -n $inte ]]
