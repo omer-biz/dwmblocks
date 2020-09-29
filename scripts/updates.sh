@@ -23,4 +23,4 @@ check_updates&
 
 icon=''
 
-echo "$icon $updates"
+echo " $icon $updates"
