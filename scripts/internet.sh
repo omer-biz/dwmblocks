@@ -15,7 +15,7 @@ fi
 net_icon="$(cat "$icon_dir/$icon_file")"
 
 case $operstat in
-	down) wifiicon="📡 " ;;
+	down) exit ;; #wifiicon="📡 " ;;
 	up) wifiicon="$(awk '/^\s*w/ { print "📶", int($3 * 100 / 70) "% " }' /proc/net/wireless)" ;;
 esac
 
@@ -48,5 +48,5 @@ check_internet() {
 check_internet&
 
 #printf "$net_icon%s%s\n" "$wifiicon" "$(sed "s/down/❎/;s/up/🌐/" /sys/class/net/e*/operstate 2>/dev/null)"
-printf "$net_icon%s" "$wifiicon" #"$(sed "s/down/❎/;s/up/🌐/" /sys/class/net/e*/operstate 2>/dev/null)"
+printf "$net_icon%s" "$wifiicon"
 

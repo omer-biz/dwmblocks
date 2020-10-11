@@ -3,6 +3,9 @@
 # Module showing network traffic. Shows how much data has been received (RX) or
 # transmitted (TX) since the previous time this script ran. So if run every
 # second, gives network traffic per second.
+operstat="$(cat /sys/class/net/w*/operstate 2>/dev/null)"
+
+[ $operstat = 'down' ] && exit
 
 update() {
     sum=0
