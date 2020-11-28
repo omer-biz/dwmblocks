@@ -1,13 +1,13 @@
 #!/bin/sh
 
-[ $(pamixer --get-mute) = true ] && echo " 0%" && exit
+[ $(pamixer --get-mute) = true ] && echo "婢 0%" && exit
 
 vol="$(pamixer --get-volume)"
 
 if [ "$vol" -ge "50" ]; then
 	icon=""
 elif [ "$vol" -lt "50" ]; then
-	icon=""
+	icon="奔"
 else
 	icon=""
 fi
